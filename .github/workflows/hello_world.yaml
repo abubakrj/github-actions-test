@@ -1,11 +1,13 @@
 name: Hello World!
 
 on:
-  push
+  create:
+    branches:
+      - 'release/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Hello World!"
+      - run: echo "Triggering build when release branch is created"
