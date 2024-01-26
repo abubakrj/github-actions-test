@@ -6,9 +6,9 @@ on:
       - 'release/**'
 
 jobs:
-  do-something:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print
-      run: echo "Event name: ${{ github.event_name }}"
-        
+    create-tag:
+        if: github.event.created != true
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print
+              run: echo "Triggering build when release branch is"
