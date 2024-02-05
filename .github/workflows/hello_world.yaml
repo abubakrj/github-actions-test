@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - 'release/**'
-
+  workflow_dispatch:
+  
 jobs:
     create-tag:
         if: github.event.created != true
