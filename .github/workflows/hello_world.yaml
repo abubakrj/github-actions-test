@@ -1,26 +1,42 @@
-name: RC Processor
+name: Prepare Release
 
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      release_type:
+        description: 'Release type'
         required: true
-        default: 'warning'
+        default: 'release'
         type: choice
         options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        required: false
-        type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
+        - release
+        - hotfix
+      rc_number:
+        description: 'Release candidate number'
         required: true
-  
+        default: '1'
+        type: choice
+        options:
+        - 1
+        - 2
+        - 3
+        - 4 
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9 
+        - 10
+      skip_tagging:
+        description: 'Should skip creating and pushin a git tag'
+        required: true
+        default: false
+        type: boolean
+      skip_deploy_qa:
+        description: 'Should skip triggering `Deploy QA' job
+        required: true
+        default: false
+        type: boolean
 jobs:
     create-tag:
         if: github.event.created != true
