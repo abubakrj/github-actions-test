@@ -33,7 +33,7 @@ on:
         default: false
         type: boolean
       skip_deploy_qa:
-        description: 'Should skip triggering `Deploy QA' job
+        description: "Should skip triggering `Deploy QA` job"
         required: true
         default: false
         type: boolean
