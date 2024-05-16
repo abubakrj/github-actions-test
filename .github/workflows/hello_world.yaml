@@ -44,7 +44,7 @@ jobs:
           contents: write
         steps:
           - run: |
-              branch_name=release/ ${{ inputs.rc_number }}
+              branch_name=release/${{ inputs.rc_number }}
               git checkout -b "$branch_name"
               git push origin "$branch_name"
 
