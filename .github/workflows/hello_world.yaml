@@ -6,11 +6,11 @@ on:
       release_type:
         description: 'Release type'
         required: true
-        default: 'release'
+        default: 'Release'
         type: choice
         options:
-        - release
-        - hotfix
+        - Release
+        - Hotfix
       rc_number:
         description: 'Release candidate number'
         required: true
@@ -27,15 +27,15 @@ on:
         - 8
         - 9 
         - 10
-      skip_tagging:
-        description: 'Should skip creating and pushin a git tag'
+      should_create_tag:
+        description: "Should create and push git tag"
         required: true
-        default: false
+        default: true
         type: boolean
-      skip_deploy_qa:
-        description: "Should skip triggering `Deploy QA` job"
+      should_trigger_deploy_qa:
+        description: "Should trigger `Deploy QA` job"
         required: true
-        default: false
+        default: true
         type: boolean
 jobs:
     create-tag:
