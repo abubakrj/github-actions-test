@@ -39,8 +39,15 @@ on:
         type: boolean
 jobs:
     create-tag:
-        if: github.event.created != true
         runs-on: ubuntu-latest
         steps:
-            - name: Print
-              run: echo "Triggering build when release branch is. Event name is" ${{ github.event_name }}
+          - run: |
+              echo "RELEASE_TYPE: $RELEASE_TYPE"
+              echo "RC_NUMBER: $RC_NUMBER"
+              echo "SHOULD_TAG: $SHOULD_TAG"
+              echo "SHOULD_DEPLOY: $SHOULD_DEPLOY"
+            env:
+              RELEASE_TYPE: ${{ inputs.release_type }}
+              RC_NUMBER: ${{ inputs.rc_number }}
+              SHOULD_TAG: ${{ inputs.should_create_tag }}
+              SHOULD_DEPLOY: ${{ inputs.should_trigger_deploy_qa }}
