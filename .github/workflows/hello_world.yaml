@@ -16,7 +16,7 @@ on:
         required: true
         default: '1'
         type: choice
-        options:
+        options: # Can be extended later if needed
         - 1
         - 2
         - 3
