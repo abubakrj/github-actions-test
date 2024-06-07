@@ -1,0 +1,19 @@
+name: Run UI Tests
+
+run-name: UI Tests
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+-RC[0-9]+' # For example: v3.13.2-RC1, v4.3.0-RC3
+  workflow_dispatch: # allows manual trigger
+
+jobs:
+    create-tag:
+        runs-on: ubuntu-latest
+        permissions:
+          contents: write
+        steps:
+          - uses: actions/checkout@v4
+          - run: |
+              echo "Hello Abu from new flow"
