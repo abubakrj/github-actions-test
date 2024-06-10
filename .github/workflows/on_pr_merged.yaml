@@ -13,4 +13,8 @@ jobs:
       - name: Print the PR merge message
         run: echo "The PR was merged"
       - name: Get source branch name
-        run: echo "The source branch name is: ${{ github.event.pull_request.head.ref }}"
+        run:
+          echo "The source branch name is: ${{ github.event.pull_request.head.ref }}"
+      - name: Get PR description
+        run: 
+          echo "The PR description is: ${{ github.event.pull_request.body }}"
