@@ -1,4 +1,4 @@
-name: Get Source Branch Name on PR Merge
+name: Get Source Branch Name and PR Description on Merge
 
 on:
   pull_request:
@@ -6,15 +6,13 @@ on:
       - closed
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print the PR merge message
-        run: echo "The PR was merged"
-      - name: Get source branch name
-        run:
-          echo "The source branch name is: ${{ github.event.pull_request.head.ref }}"
-      - name: Get PR description
-        run: 
-          echo "The PR description is: ${{ github.event.pull_request.body }}"
+  if: github.event.pull_request.merged == true
+  runs-on: ubuntu-latest
+  steps:
+    - name: Print the PR merge message
+      run: echo "The PR was merged"
+
+    - name: Get source branch name
+      run: echo "The source branch name is: ${{ github.event.pull_request.head.ref }}"
+    - name: Get PR description
+      run: echo "The PR description is: ${{ github.event.pull_request.body }}"
